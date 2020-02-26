@@ -1,0 +1,26 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class P2744 {
+
+    public static void main(String[] args) throws IOException {
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine()), i, r, t;
+        int[] v = new int[n];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (i = 0; i < n; i++)
+            v[i] = Integer.parseInt(st.nextToken());
+        Arrays.sort(v);
+        r = v[n - 1] + 1;
+        for (i = n - 2; i >= 0; i--) {
+            if ((t = (v[i] + (n - i))) > r)
+                r += t - r;
+        }
+        System.out.println(r + 1);
+    }
+    
+}
