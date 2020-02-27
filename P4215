@@ -1,0 +1,30 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class P4215 {
+
+    public static void main(String[] args) throws IOException {
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Map<String, Integer> dicc = new HashMap<>();
+        int n = Integer.parseInt(br.readLine()), v;
+        String k;
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        while (n-- > 0) {            
+            k = st.nextToken();
+            v = dicc.get(k) != null ? dicc.get(k) : 0;
+            ++v;
+            dicc.put(k, v);
+        }
+        for (Map.Entry<String, Integer> entry : dicc.entrySet())
+            if (entry.getValue() % 2 != 0) {
+                System.out.println(entry.getKey());
+                break;
+            }
+    }
+    
+}
