@@ -1,0 +1,33 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class P4244 {
+
+    public static void main(String[] args) throws IOException {
+        // Husbands association
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken()), t = Integer.parseInt(st.nextToken()), i, min = 0, max = 0, aux = 0;
+        int[] v = new int[n];
+        st = new StringTokenizer(br.readLine());
+        for (i = 0; i < n; i++)
+            v[i] = Integer.parseInt(st.nextToken());
+        Arrays.sort(v);
+        for (i = 0; i < n; i++)
+            if (aux + v[i] < t) {
+                aux += v[i];
+                min++;
+            }
+        aux = 0;
+        for (i = v.length - 1; i >= 0; i--)
+            if (aux + v[i] < t) {
+                aux += v[i];
+                max++;
+            }
+        System.out.println(max + " " + min);
+    }
+    
+}
