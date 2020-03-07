@@ -1,0 +1,47 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class P4277 {
+
+    public static void main(String[] args) throws IOException {
+        // Concatenated Prime Numbers
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        String line, n, aux;
+        int k, i, j, t, w;
+        boolean b;
+        boolean[] p = new boolean[10000001];
+        p[0] = p[1] = true;
+        for (i = 2; i <= 5000000; i++)
+            p[2 * i] = true;
+        for (i = 3; i <= 3163; i += 2) {
+            if (!p[i]) {
+                t = 10000000 / i;
+                for (j = i; j <= t; j++)
+                    p[i * j] = true;
+            }
+        }
+        while ((line = br.readLine()) != null) {            
+            b = true;
+            st = new StringTokenizer(line);
+            k = Integer.parseInt(st.nextToken());
+            n = st.nextToken();
+            for (i = 0; i < n.length(); i += k) {
+                aux = ""; w = i + k;
+                for (j = i; j < w; j++)
+                    aux += n.charAt(j);
+                if (p[Integer.parseInt(aux)]) {
+                    b = false;
+                    break;
+                }
+            }
+            if (b)
+                System.out.println(":)");
+            else
+                System.out.println(":(");
+        }
+    }
+    
+}
