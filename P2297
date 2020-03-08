@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class P2297 {
+
+    public static void main(String[] args) {
+        // Death Knight Hero
+        Scanner sc = new Scanner(System.in);
+        int battles = sc.nextInt(), won = 0;
+        String line;
+        while (battles-- > 0) {            
+            line = sc.next();
+            if (!line.contains("CD"))
+                won++;
+        }
+        System.out.println(won);
+    }
+}
