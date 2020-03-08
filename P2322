@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class P2322 {
+
+    public static void main(String[] args) {
+	// Electrical Outlets
+        Scanner sc = new Scanner(System.in);
+        int cantCasos = sc.nextInt(), k, o;
+        while (cantCasos-- > 0) {
+            k = sc.nextInt();
+            o = 0;
+            for (int i = 1; i <= k; i++)
+                o += sc.nextInt();
+            System.out.println(o - (k - 1));
+        }
+    }
+    
+}
