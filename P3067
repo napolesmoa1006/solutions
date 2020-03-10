@@ -1,0 +1,41 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class P3067 {
+    
+    static int binarySearch(int[] vector, int dato) {
+        int centro, inf = 0, sup = vector.length - 1;
+        while (inf <= sup) {            
+            centro = (sup + inf) / 2;
+            if (vector[centro] == dato)
+                return centro;
+            else {
+                if (dato < vector[centro])
+                    sup = centro - 1;
+                else
+                    inf = centro + 1;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        // Sorting and Searching I
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), numeros[], q1, q2;
+        numeros = new int[n];
+        for (int i = 0; i < n; i++)
+            numeros[i] = sc.nextInt();
+        Arrays.sort(numeros);
+        q1 = sc.nextInt(); q2 = sc.nextInt();
+        while (q1-- > 0) {            
+            if (binarySearch(numeros, sc.nextInt()) != -1)
+                System.out.println(":)");
+            else
+                System.out.println(":(");
+        }
+        while (q2-- > 0)
+            System.out.println(numeros[sc.nextInt() - 1]);
+    }
+    
+}
