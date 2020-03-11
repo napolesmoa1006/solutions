@@ -1,0 +1,16 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class P3912 {
+
+    public static void main(String[] args) throws IOException {
+        // Assisting Grandpa Laino
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        if (br.readLine().contains("i"))
+            System.out.println("N");
+        else
+            System.out.println("S");
+    }
+}
