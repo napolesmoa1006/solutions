@@ -1,0 +1,19 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class P3253 {
+    
+    public static void main(String[] args) {
+        // Union of Sets
+        Scanner sc = new Scanner(System.in);
+        int cases = sc.nextInt(), c;
+        Set<String> set= new HashSet<>();
+        while (cases-- > 0 ) {            
+            c = sc.nextInt();
+            while (c-- > 0)
+                set.add(sc.next());
+        }
+        System.out.println(set.size());
+    }
+}
