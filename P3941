@@ -1,0 +1,41 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class P3941 {
+    
+    static boolean isPalindrome(String str) {
+        int mid = str.length() / 2;
+        for (int i = 0; i < mid; i++) {
+            if (str.charAt(i) != str.charAt(str.length() - (i + 1)))
+                return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) throws IOException {
+        // Classifying palindromes
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line;
+        int n = Integer.parseInt(br.readLine()), i;
+        while (n-- > 0) {            
+            line = br.readLine();
+            if (isPalindrome(line))
+                System.out.println("palindrome");
+            else {
+                boolean bi_pal = false;
+                for (i = 1; i < line.length(); i++) {
+                    if (isPalindrome(line.substring(0, i)) && isPalindrome(line.substring(i, line.length()))) {
+                        bi_pal = true;
+                        break;
+                    }
+                }
+                if (bi_pal)
+                    System.out.println("bi-palindrome");
+                else
+                    System.out.println("non-palindrome");
+            }
+        }
+    }
+    
+}
