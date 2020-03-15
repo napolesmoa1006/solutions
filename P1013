@@ -1,0 +1,51 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class P1013 {
+    
+    static int gcd(int a, int b) {
+        int t;
+        while (b > 0) {
+            t = b;
+            b = a % b;
+            a = t;
+        }
+        return a;
+    }
+
+    public static void main(String[] args) throws IOException {
+        // P-ésima Potencia Perfecta
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        long n;
+        int[] primes = new int[50];
+        int result, nprimes, i;
+        while ((n = Long.parseLong(br.readLine())) != 0)
+        {
+            primes[nprimes = 0] = 1;
+            for (i = 2; i < 65536 && n != 1; i++)
+                if (n % i == 0)
+                {
+                    primes[nprimes] = 0;
+                    while (n % i == 0)
+                    {
+                        primes[nprimes]++;
+                        n /= i;
+                    }
+                    nprimes++;
+                }
+            if (n == 1 || n == -1)
+                result = primes[0];
+            else
+                result = 1;
+            if (nprimes > 1)
+                for (i = 1; i < nprimes; i++)
+                    result = gcd(result, primes[i]);
+            if (n == -1)
+                while (result % 2 == 0)
+                    result /= 2;
+            System.out.println(result);
+        }
+    }
+    
+}
