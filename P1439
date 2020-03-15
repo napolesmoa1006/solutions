@@ -1,0 +1,28 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class P1439 {
+
+    public static void main(String[] args) {
+        // Alaska
+        Scanner sc = new Scanner(System.in);
+        int cant, stations[];
+        boolean possible;
+        while ((cant = sc.nextInt()) != 0) {
+            possible = true;
+            stations = new int[cant];
+            for (int i = 0; i < cant; i++)
+                stations[i] = sc.nextInt();
+            Arrays.sort(stations);
+            for (int i = 1; i < cant; i++)
+                if (stations[i] - stations[i - 1] > 200) {
+                    possible = false;
+                    break;
+                }
+            if (possible && (1422 - stations[cant - 1]) * 2 <= 200)
+                System.out.println("POSSIBLE");
+            else
+                System.out.println("IMPOSSIBLE");
+        }
+    }
+}
