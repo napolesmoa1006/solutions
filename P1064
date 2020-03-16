@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class P1064 {
+
+    public static void main(String[] args) {
+        // Alarm Clock
+        Scanner sc = new Scanner(System.in);
+        while (true) {            
+            int H1 = sc.nextInt();
+            int M1 = sc.nextInt();
+            int H2 = sc.nextInt();
+            int M2 = sc.nextInt();
+            if (H1 == M1 && H1 == H2 && M1 == M2)
+                break;
+            else {
+                int min_dor = 0;
+                int inicio = H1 * 60 + M1; // minuto en el que comenzó a dormir
+                int limite = H2 * 60 + M2; // minuto en el que se despertó
+                if (inicio < limite)
+                    min_dor = limite - inicio;
+                else
+                    min_dor = 1440 - (inicio - limite); // el día tiene 1440 min. 
+                System.out.println(min_dor);
+            }
+        }
+           
+    }
+}
