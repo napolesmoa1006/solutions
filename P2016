@@ -1,0 +1,52 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class P2016 {
+
+    public static void main(String[] args) throws IOException {
+        // Chess Valuations
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        int[][] board = {
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 1, 1, 1, 1, 1, 1, 1, 1},
+            {0, 1, 2, 2, 2, 2, 2, 2, 1},
+            {0, 1, 2, 3, 3, 3, 3, 2, 1},
+            {0, 1, 2, 3, 4, 4, 3, 2, 1},
+            {0, 1, 2, 3, 4, 4, 3, 2, 1},
+            {0, 1, 2, 3, 3, 3, 3, 2, 1},
+            {0, 1, 2, 2, 2, 2, 2, 2, 1},
+            {0, 1, 1, 1, 1, 1, 1, 1, 1},
+        };
+        String line, pp[];
+        int white = 0, black = 0, effectiveness, piece, column, row;
+        char letter;
+        while ((line = br.readLine()) != null) {
+            pp = line.split(" ");
+            column = pp[0].charAt(0) - 96;
+            row = Integer.parseInt(pp[0].charAt(1) + "");
+            effectiveness = board[row][column];
+            letter = pp[1].charAt(1);
+            switch(letter) {
+                case 'K': piece = 0; break;
+                case 'P': piece = 1; break;
+                case 'T': piece = 5; break;
+                case 'Q': piece = 11; break;
+                default:  piece = 3; break;
+            }
+            if (pp[1].charAt(0) == 'W')
+                white += piece * effectiveness;
+            else
+                black += piece * effectiveness;
+        }
+        System.out.println(white + " " + black);
+        if (white > black)
+            System.out.println("Advantage for white pieces");
+        else if (white < black)
+            System.out.println("Advantage for black pieces");
+        else
+            System.out.println("No decisive advantages");
+    }
+    
+}
