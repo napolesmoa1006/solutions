@@ -1,0 +1,25 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class P4207 {
+
+    public static void main(String[] args) {
+        // Pedro Picapiedras
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), k, v, t = 0, r = 0;
+        Map<Integer, Integer> dicc = new HashMap<>();
+        while (n-- > 0) {            
+            k = sc.nextInt();
+            v = dicc.get(k) != null ? dicc.get(k) : 0;
+            dicc.put(k, ++v);
+        }
+        for (Map.Entry<Integer, Integer> entry : dicc.entrySet()) {
+            Integer value = entry.getValue();
+            t += value / 4;
+            r += value % 4;
+        }
+        System.out.println(t + " " + r);
+    }
+    
+}
