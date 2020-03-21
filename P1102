@@ -1,0 +1,18 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class P1102 {
+
+    public static void main(String[] args) {
+	   // You Can Say 11
+       Scanner sc = new Scanner(System.in);
+        BigInteger n;
+        while ((n = sc.nextBigInteger()).compareTo(BigInteger.ZERO) != 0) {            
+            if(n.remainder(new BigInteger("11")).compareTo(BigInteger.ZERO) == 0)
+                System.out.println(n + " is a multiple of 11.");
+            else
+                System.out.println(n + " is not a multiple of 11.");
+        }
+
+    }
+}
