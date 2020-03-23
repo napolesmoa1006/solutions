@@ -1,0 +1,19 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+
+public class P1176 {
+
+    public static void main(String[] args) throws IOException {
+        // Ternary
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BigInteger bi;
+        String l;
+        while ((l = br.readLine()).compareTo("-1") != 0) {            
+            bi = new BigInteger(l);
+            System.out.println(bi.toString(3));
+        }
+    }
+    
+}
