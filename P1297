@@ -1,0 +1,19 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class P1297 {
+
+    public static void main(String[] args) {
+        // Divisibility by 495
+		Scanner sc = new Scanner(System.in);
+        int cant = sc.nextInt();
+        while (cant-- > 0) {
+            BigInteger bi = sc.nextBigInteger();
+            if(bi.mod(new BigInteger("495")).equals(new BigInteger("0")))
+                System.out.println("YES");
+            else
+                System.out.println("NO");            
+        }
+
+    }
+}
