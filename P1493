@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class P1493 {
+
+    public static void main(String[] args) throws IOException {
+        // Geometrical Task II
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr); // %.2f\n
+        double A, B;
+        String[] line = br.readLine().split(" ");
+        if (line[0].equals("circle")) {
+            A = Double.parseDouble(line[1]);
+            System.out.printf("%.2f\n", 3.14 * A * A);
+        } else {
+            A = Double.parseDouble(line[1]);
+            B = Double.parseDouble(line[2]);
+            System.out.printf("%.2f\n", A * B / 2);
+        }
+    }
+    
+}
