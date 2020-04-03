@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class COJ {
+    
+    static class Player {
+        
+        String name;
+        int PA, PJ, G, A, TA, TR;
+        double factor;
+
+        public Player(String name, int PA, int PJ, int G, int A, int TA, int TR) {
+            this.name = name;
+            this.PA = PA;
+            this.PJ = PJ;
+            this.G = G;
+            this.A = A;
+            this.TA = TA;
+            this.TR = TR;
+            this.factor = Math.log10(PA) + PJ + 2 * G + A - (TA + 2 * TR);
+        }
+    }
+
+    public static void main(String[] args) {
+        // FIFA World Player
+        Scanner sc = new Scanner(System.in);
+        int cant = sc.nextInt(), i;
+        Player p;
+        Player[] players = new Player[cant];
+        for (i = 0; i < cant; i++) {
+            p = new Player(sc.next(), sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt());
+            players[i] = p;
+        }
+        p = players[0];
+        for (i = 1; i < cant; i++) {
+            if (p.factor < players[i].factor)
+                p = players[i];
+        }
+        System.out.println(p.name);
+    }
+}
