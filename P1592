@@ -1,0 +1,21 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+
+public class P1592 {
+
+    public static void main(String[] args) throws IOException {
+        // The Size is Not Important
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        BigInteger bi1, bi2;
+        int m = Integer.parseInt(br.readLine());
+        while (m-- > 0) {            
+            bi1 = new BigInteger(br.readLine());
+            bi2 = new BigInteger(br.readLine());
+            System.out.println(bi1.multiply(bi2));
+        }
+    }
+    
+}
