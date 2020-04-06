@@ -1,0 +1,49 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class P4076 {
+    
+    static int rsq(int ind, int[] array) {
+        assert ind > 0;
+        int sum = 0;
+        while (ind > 0) {
+            sum += array[ind];
+            ind -= ind & (-ind);
+        }
+        return sum;
+    }
+    
+    static int rsq(int a, int b, int[] array) {
+        assert b >= a && a > 0 && b > 0;
+        return rsq(b, array) - rsq(a - 1, array);
+    }
+    
+    static void update(int ind, int value, int[] array) {
+        assert ind > 0;
+        while (ind < array.length) {
+            array[ind] += value;
+            ind += ind & (-ind);
+        }
+    }
+    
+    public static void main(String[] args) throws IOException {
+        // Add and Count with Sets
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int q = Integer.parseInt(br.readLine()), x, a, b, l[] = new int[1000001];
+        StringTokenizer st;
+        while (q-- > 0) {            
+            st = new StringTokenizer(br.readLine());
+            if (st.nextToken().compareTo("1") == 0) {
+                x = Integer.parseInt(st.nextToken());
+                update(x, 1, l);
+            } else {
+                a = Integer.parseInt(st.nextToken());
+                b = Integer.parseInt(st.nextToken());
+                System.out.println(rsq(a, b, l));
+            }
+        }
+    }
+    
+}
