@@ -1,0 +1,26 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class P4062 {
+
+    public static void main(String[] args) throws IOException {
+        // Help a PhD candidate out!
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        int total = Integer.parseInt(br.readLine()), first, second;
+        String line, array[];
+        while (total-- > 0) {
+            line = br.readLine();
+            if (line.equals("P=NP")) {
+                System.out.println("skipped");
+                continue;
+            }
+            array = line.split("\\+");
+            first  = Integer.parseInt(array[0]);
+            second = Integer.parseInt(array[1]);
+            System.out.println(first + second);
+        }
+    }
+    
+}
