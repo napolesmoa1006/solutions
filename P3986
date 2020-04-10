@@ -1,0 +1,60 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class P3986 {
+    
+    static class Frequency {
+        
+        private final int digit, times;
+
+        public Frequency(int digit, int times) {
+            this.digit = digit;
+            this.times = times;
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        // Playing with digits
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        String line = br.readLine();
+        int i, j, repeat[] = new int[9];
+        Frequency frequency[] = new Frequency[9], tmp;
+        for (i = 0; i < line.length(); i++) {
+            if (line.charAt(i) == '1')
+                repeat[0]++;
+            if (line.charAt(i) == '2')
+                repeat[1]++;
+            if (line.charAt(i) == '3')
+                repeat[2]++;
+            if (line.charAt(i) == '4')
+                repeat[3]++;
+            if (line.charAt(i) == '5')
+                repeat[4]++;
+            if (line.charAt(i) == '6')
+                repeat[5]++;
+            if (line.charAt(i) == '7')
+                repeat[6]++;
+            if (line.charAt(i) == '8')
+                repeat[7]++;
+            if (line.charAt(i) == '9')
+                repeat[8]++;
+        }
+        for (i = 0; i < 9; i++)
+            frequency[i] = new Frequency(i + 1, repeat[i]);
+        for (i = 1; i < 9; i++) {
+            tmp = frequency[i]; j = i - 1;
+            while (j >= 0 && tmp.times > frequency[j].times) {                
+                frequency[j + 1] = frequency[j];
+                j--;
+            }
+            frequency[j + 1] = tmp;
+        }
+        System.out.print(frequency[0].digit);
+        for (i = 1; i < 9; i++)
+            System.out.print(" " + frequency[i].digit);
+        System.out.println();
+    }
+    
+}
