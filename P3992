@@ -1,0 +1,47 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class P3992 {
+
+   public static void main(String[] args) throws IOException {
+	   // Five Minutes
+       BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+       String fecha[] = buffer.readLine().split(":");
+       int hora = Integer.parseInt(fecha[0]);
+       int minutes = Integer.parseInt(fecha[1]);
+       if (hora == 7 || hora == 1){
+           if (minutes>=45 && minutes <50){
+               System.out.println("Students, you may go out.");
+           }else{
+               System.out.println("Students, Surprise Quiz!");
+           }
+       }else if (hora == 8 || hora == 2){
+           if (minutes>=35 && minutes <40){
+               System.out.println("Students, you may go out.");
+           }else{
+               System.out.println("Students, Surprise Quiz!");
+           }
+       }else if (hora == 9 || hora == 3){
+           if (minutes>=25 && minutes <30){
+               System.out.println("Students, you may go out.");
+           }else{
+               System.out.println("Students, Surprise Quiz!");
+           }
+       }else if (hora == 10 || hora == 4){
+           if (minutes>=15 && minutes <20){
+               System.out.println("Students, you may go out.");
+           }else{
+               System.out.println("Students, Surprise Quiz!");
+           }
+       }else if (hora == 11 || hora == 5){
+           if ((minutes>=05 && minutes <10) || (minutes>=55 && minutes <=59)){
+               System.out.println("Students, you may go out.");
+           }else{
+               System.out.println("Students, Surprise Quiz!");
+           }
+       }else{
+           System.out.println("Students, you may go out.");
+       }   
+   }
+} 
