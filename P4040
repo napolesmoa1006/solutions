@@ -1,0 +1,69 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+public class P4040 {
+        
+    public static void main(String[] args) throws IOException {
+        // Keypad Keyword
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String v[], l[], w, t;
+        int n = Integer.parseInt(br.readLine()), m, i, j;
+        boolean b;
+        v = new String[n];
+        l = new String[n];
+        for (i = 0; i < n; ++i)
+            l[i] = br.readLine();
+        Arrays.sort(l);
+        for (i = 0; i < n; ++i) {
+            t = "";
+            for (j = 0; j < l[i].length(); ++j) {
+                switch (l[i].charAt(j)) {
+                    case 'A': case 'B': case 'C':
+                        t += "2";
+                        break;
+                    case 'D': case 'E': case 'F':
+                        t += "3";
+                        break;
+                    case 'G': case 'H': case 'I':
+                        t += "4";
+                        break;
+                    case 'J': case 'K': case 'L':
+                        t += "5";
+                        break;
+                    case 'M': case 'N': case 'O':
+                        t += "6";
+                        break;
+                    case 'P': case 'Q': case 'R': case 'S':
+                        t += "7";
+                        break;
+                    case 'T': case 'U': case 'V':
+                        t += "8";
+                        break;
+                    case 'W': case 'X': case 'Y': case 'Z':
+                        t += "9";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            v[i] = t;
+        }
+        m = Integer.parseInt(br.readLine());
+        for (i = 0; i < m; ++i) {
+            b = false;
+            w = br.readLine();
+            for (j = 0; j < n; ++j) {
+                if (v[j].equals(w)) {
+                    System.out.println(l[j]);
+                    b = true;
+                    break;
+                }
+            }
+            if (!b)
+                System.out.println("no solution");
+        }
+    }
+    
+}
